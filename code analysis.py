@@ -1,0 +1,15 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv(r"C:\Users\THINK PAD\Downloads\archive (3)\netflix_titles.csv")
+counts = df["type"].value_counts()
+plt.figure(figsize=(7,5))
+plt.bar(["Movie","TV Show"],[counts["Movie"],counts["TV Show"]],color=["#4C72B0","#DD43B1"],width=0.4)
+plt.text(0,counts["Movie"]+50,str(counts["Movie"]),ha="center",fontsize=12,fontweight="bold")
+plt.text(1,counts["TV Show"]+50,str(counts["TV Show"]),ha="center",fontsize=12,fontweight="bold")
+plt.title("Movies vs TV Shows on Netflix")
+plt.xlabel("Type")
+plt.ylabel("count")
+plt.tight_layout()
+plt.ylim(0,7000)
+plt.savefig("movies_vs_tvshows.png",dpi=150)
+plt.show()
